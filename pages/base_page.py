@@ -15,4 +15,5 @@ class BasePage:
             self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
-        return True
+        return True  # Если не указать в конце тела функции return True, функция вернет None,
+        # что расценивается как False.
