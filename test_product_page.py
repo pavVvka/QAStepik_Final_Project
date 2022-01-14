@@ -7,6 +7,7 @@ base_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/
 link_data = ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"]
 
 
+@pytest.mark.skip
 @pytest.mark.parametrize("link", link_data)
 def test_guest_can_add_product_to_basket(browser, link):
     # link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019."
@@ -28,19 +29,15 @@ def test_guest_can_add_product_to_basket(browser, link):
     ppage.solve_quiz_and_get_code()
 
 #  Expected Tests Results :
-    # 1.1. Сообщение о том, что товар добавлен в корзину.
+# 1.1. Сообщение о том, что товар добавлен в корзину.
     ppage.should_be_add_to_cart_alert()
-
-    # 1.2. Название товара в сообщении должно совпадать с тем товаром, который вы действительно добавили.
+# 1.2. Название товара в сообщении должно совпадать с тем товаром, который вы действительно добавили.
     ppage.should_be_product_name_as_in_store()
-
-    # 2.1. Сообщение со стоимостью корзины.
+# 2.1. Сообщение со стоимостью корзины.
     ppage.should_be_cart_product_cost_alert()
-
-    # 2.2. Стоимость корзины совпадает с ценой товара.
+# 2.2. Стоимость корзины совпадает с ценой товара.
     ppage.should_be_expected_product_price_in_cart()
-
-    # Test: ALERT with success add to cart message should disappear
+# Test: ALERT with success add to cart message should disappear
     # ppage.should_disappear_success_message() # no disappearance option yet
 
 
@@ -67,4 +64,15 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     ppage.should_disappear_success_message()
 
 
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    ppage = ProductPage(browser, link)
+    ppage.open()
+    ppage.should_be_login_link()
 
+
+def test_guest_can_go_to_login_page_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    ppage = ProductPage(browser, link)
+    ppage.open()
+    ppage.go_to_login_page()
