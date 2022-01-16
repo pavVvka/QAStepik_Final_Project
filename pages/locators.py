@@ -6,8 +6,14 @@ class BasePageLocators:
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
 
 
-class MainPageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+# class MainPageLocators:
+#     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+
+
+class BasketPageLocators:
+    CART_BUTTON = (By.CSS_SELECTOR, ".btn-group a.btn-default")
+    BUSKET_ITEMS = (By.CLASS_NAME, "basket-items")
+    EMPTY_CART_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
 
 
 class LoginPageLocators:

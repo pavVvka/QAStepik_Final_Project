@@ -3,10 +3,8 @@ from .base_page import BasePage
 
 
 class MainPage(BasePage):
-    # stub
     def __init__(self, *args, **kwargs):
-        # super(MainPage, self).__init__(*args, **kwargs)
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)  # делегирование аргументов инициализатору родительского класса
 
 """
     def go_to_login_page(self):

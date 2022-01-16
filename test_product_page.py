@@ -1,5 +1,6 @@
 # pytest -s -v --tb=line test_product_page.py
 from .pages.product_page import *
+from .pages.basket_page import *
 import pytest
 base_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer"
 # link_data = [f"{base_link}{x}" for x in range(10)]
@@ -50,6 +51,7 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     ppage.should_not_be_success_message()
 
 
+@pytest.mark.skip
 def test_guest_cant_see_success_message(browser):
     ppage = ProductPage(browser, link_data[0])
     ppage.open()
@@ -64,6 +66,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     ppage.should_disappear_success_message()
 
 
+@pytest.mark.skip
 def test_guest_should_see_login_link_on_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     ppage = ProductPage(browser, link)
@@ -71,8 +74,25 @@ def test_guest_should_see_login_link_on_product_page(browser):
     ppage.should_be_login_link()
 
 
+@pytest.mark.skip
 def test_guest_can_go_to_login_page_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     ppage = ProductPage(browser, link)
     ppage.open()
     ppage.go_to_login_page()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    """
+    1. Гость открывает страницу товара
+    2. Переходит в корзину по кнопке в шапке
+    3. Ожидаем, что в корзине нет товаров
+    4. Ожидаем, что есть текст о том что корзина пуста
+    """
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/"
+    ppage = ProductPage(browser, link)
+    ppage.open()
+    ppage.go_to_basket_page()
+    basket_page = BasketPage(browser, link)
+    basket_page.should_be_empty_basket()
+    basket_page.should_be_empty_basket_message()
