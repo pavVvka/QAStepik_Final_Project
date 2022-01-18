@@ -11,6 +11,9 @@ link_data = ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207
 # base_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer"
 # link_data = [f"{base_link}{x}" for x in range(10)]
 # pytest.param(link_data[7], marks=pytest.mark.xfail(reason="TYPO Wrong Name of Product in Cart"))
+# @pytest.mark.parametrize("link", link_data)
+# def test_guest_can_add_product_to_basket(browser, link):
+#     ppage = ProductPage(browser, link)
 # ============================================================================
 
 
@@ -35,6 +38,7 @@ class TestUserAddToBasketFromProductPage:
         ppage.open()
         ppage.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         ppage = ProductPage(browser, link_data[0])
         ppage.open()
@@ -50,10 +54,10 @@ class TestUserAddToBasketFromProductPage:
         ppage.should_be_expected_product_price_in_cart()  # 2.2. Test: compare product price with price in cart.
 
 
-@pytest.mark.skip(reason="example of Promo Test with parametrization "
-                         "for data_link list of ['/?promo=offer' links]")
-@pytest.mark.parametrize("link", link_data)
-def test_guest_can_add_product_to_basket(browser, link):
+@pytest.mark.need_review
+# @pytest.mark.parametrize("link", link_data)
+def test_guest_can_add_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1"
     ppage = ProductPage(browser, link)
     ppage.open()
     ppage.get_product_price_in_store()
@@ -93,32 +97,33 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     ppage.should_disappear_success_message()
 
 
-@pytest.mark.skip(reason="temporary skipped")
-def test_guest_should_see_login_link_on_product_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
-    ppage = ProductPage(browser, link)
-    ppage.open()
-    ppage.should_be_login_link()
-
-
-@pytest.mark.skip(reason="temporary skipped")
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-city-and-the-stars_95/"
     ppage = ProductPage(browser, link)
     ppage.open()
     ppage.go_to_login_page()
 
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     """     1. Гость открывает страницу товара
             2. Переходит в корзину по кнопке в шапке
             3. Ожидаем, что в корзине нет товаров
             4. Ожидаем, что есть текст о том что корзина пуста
     """
-    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/"
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-city-and-the-stars_95/"
     ppage = ProductPage(browser, link)
     ppage.open()
     ppage.go_to_basket_page()
     basket_page = BasketPage(browser, link)
     basket_page.should_be_empty_basket()
     basket_page.should_be_empty_basket_message()
+
+
+@pytest.mark.skip(reason="temporary skipped")
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-city-and-the-stars_95/"
+    ppage = ProductPage(browser, link)
+    ppage.open()
+    ppage.should_be_login_link()
