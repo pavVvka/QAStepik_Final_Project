@@ -22,8 +22,8 @@ def browser(request):
     else:
         browser = webdriver.Chrome(options=options)
 
-    # browser.implicitly_wait(10)  # чтобы не мешал Explicit Waits
+    browser.implicitly_wait(10)  # additional attention on Explicit Waits for any conflict
     yield browser
-    # browser.quit()
-    input("\n       Press Enter to FINISH test and QUIT Browser: ")
     browser.quit()
+    # input("\n       Press Enter to FINISH test and QUIT Browser: ")
+    # browser.quit()
