@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+"""   каждый селектор — это пара: (как искать, 'что искать') """
 
 
 class BasePageLocators:
@@ -13,7 +14,7 @@ class BasePageLocators:
 
 class BasketPageLocators:
     CART_BUTTON = (By.CSS_SELECTOR, ".btn-group a.btn-default")
-    BUSKET_ITEMS = (By.CLASS_NAME, "basket-items")
+    BASKET_ITEMS = (By.CLASS_NAME, "basket-items")
     EMPTY_CART_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
 
 

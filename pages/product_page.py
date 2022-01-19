@@ -16,7 +16,7 @@ class ProductPage(BasePage):
     def get_product_name_in_store(self):
         """Func defines and return global 'product_name_expected' as product name from Product Page"""
         self.product_name_expected = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
-        return self.product_name_expected
+        # return self.product_name_expected
 
     def should_be_add_to_cart_alert(self):
         """Func asserts presence of add to cart ALERT at Cart Page"""

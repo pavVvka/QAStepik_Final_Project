@@ -45,7 +45,7 @@ class BasePage:
         return False
 
     def is_disappeared(self, how, what, timeout=4):
-        """ Method waits for ALERT message will disappear until timeout:
+        """ Method waits for ALERT message will disappear before timeout ends:
         Return: TRUE, if element has disappeared in time of "timeout"
                FALSE, if element has not disappeared during "timeout" as TimeoutException appeared."""
         try:
