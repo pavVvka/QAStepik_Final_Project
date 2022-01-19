@@ -1,22 +1,36 @@
 from .base_page import BasePage
-# from .locators import MainPageLocators
 
 
 class MainPage(BasePage):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)  # делегирование аргументов инициализатору родительского класса
+        """ делегирование аргументов инициализатору родительского класса """
+        super().__init__(*args, **kwargs)
+
 
 """
+# ==========> Способ 1 вернуть нужный Page Object :  
+# в методе иниициализировать новый объект Page и вернуть его: 
+
+from .locators import MainPageLocators
     def go_to_login_page(self):
         link = self.browser.find_element(*MainPageLocators.LOGIN_LINK)
         link.click()
-        # alert = self.browser.switch_to.alert
-        # alert.accept()
 
-        # return LoginPage(browser=self.browser, url=self.browser.current_url)
+        return LoginPage(browser=self.browser, url=self.browser.current_url)
         # При создании объекта мы обязательно передаем ему тот же самый объект драйвера для работы
         # с браузером, а в качестве url передаем текущий адрес.
+        
+        # Тогда этот метод в тесте будет вызываться так:
+        # page = MainPage(browser, link)
+        # login_page = page.go_to_login_page()
 
-    def should_be_login_link(self):
-        assert self.is_element_present(*MainPageLocators.LOGIN_LINK), "Login link is not presented"
+# ==========> Способ 2 вернуть нужный Page Object :  
+# в самом тесте иниициализировать новый объект Page явно:
+        
+        # Убрать: return LoginPage(browser=self.browser, url=self.browser.current_url)
+        
+        # Тогда этот метод в тесте будет вызываться так:
+        # page = MainPage(browser, link)
+        # login_page = LoginPage(browser, browser.current_url)
+
 """
