@@ -10,8 +10,29 @@ QAStepik_Final_Project.  https://stepik.org/lesson/199980/step/6?unit=174035
 
 
 pytest -v --tb=line --language=en -m need_review
-run 4 tests:
-test_user_can_add_product_to_basket
-test_guest_can_add_product_to_basket
-test_guest_cant_see_product_in_basket_opened_from_product_page
-test_guest_can_go_to_login_page_from_product_page
+
+    runs 4 from 12 tests:
+    All asserts are in separate Page Object files.
+    ---------------------
+    * test_user_can_add_product_to_basket
+      - Test uses def Setup from Class group: to create new user>login>check if it is loginned
+      - Opens Product Page>keep stored Price and Name of Product for fucher check
+      - Activate P.O. method: No message about adding roduct to cart should be at Product Page (negative test)
+      - Activate P.O. method: Adding Product to Cart
+      - Activate P.O. method: Asserts that Add to Cart message presents (pozitive test)
+      - Activate P.O. method: Check if Name and Price in Cart are same as at Product Page
+      - Quits browser through @pytest.fixture in Conftest.py 
+      
+    * test_guest_can_add_product_to_basket
+      - Same test as above
+      - without new user registration
+      - test uses parametrization to run list of product links
+      - test marks all fail tests from list as XFAIL
+      
+    * test_guest_cant_see_product_in_basket_opened_from_product_page
+      - From Product Page open Cart
+      - Activates P.O. method of asserts that Cart is empty
+      - Activate P.O. method asserts that Message about empty cart presents on Cart Page
+      
+    * test_guest_can_go_to_login_page_from_product_page
+      - test uses method from BasePage(parent) class to open link from any pages
