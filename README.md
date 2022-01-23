@@ -12,8 +12,12 @@ QAStepik_Final_Project.  https://stepik.org/lesson/199980/step/6?unit=174035
 
 pytest -v --tb=line --language=en -m need_review
 
-    runs 4 from 12 tests:
-    All asserts locate in separate Page Object files and activate through P.O. methods.
+    Runs 4 @pytest.mark.need_review from 12 tests:
+    All asserts are located in separate Page Object files and activate through P.O. methods.
+    All locators are located in locators.py Page Object file.
+    Basepage.py consists base parent class and have helper methods for all inherited objects:
+          is_element_present(self, how, what) and is_not_element_present(self, how, what, timeout= *):
+          "how" takes (css, id, xpath, ...) arguments and "what" takes selectors 
     ---------------------
     * test_user_can_add_product_to_basket
       - Test uses def Setup from Class group: to create new user>login>check if it is loginned
@@ -22,13 +26,13 @@ pytest -v --tb=line --language=en -m need_review
       - Activate P.O. method: Adding Product to Cart
       - Activate P.O. method: Asserts that Add to Cart message presents (pozitive test)
       - Activate P.O. method: Check if Name and Price in Cart are same as at Product Page
-      - Quits browser through @pytest.fixture in Conftest.py 
+      - Quits browser through @pytest.fixture in conftest.py 
       
     * test_guest_can_add_product_to_basket
       - Same test as above
       - without new user registration
       - test uses parametrization to run list of product links
-      - test marks all fail tests from list as XFAIL
+      - test marks all fail tests from list of product links as XFAIL
       
     * test_guest_cant_see_product_in_basket_opened_from_product_page
       - From Product Page open Cart
