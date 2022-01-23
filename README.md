@@ -17,12 +17,12 @@ pytest -v --tb=line --language=en -m need_review
     All locators are located in locators.py Page Object file.
     Basepage.py consists base parent class and have helper methods for all inherited objects:
           is_element_present(self, how, what) and is_not_element_present(self, how, what, timeout= *):
-          "how" takes (css, id, xpath, ...) arguments and "what" takes selectors 
+          "how" takes (css, id, xpath, ...) string as arguments and "what" takes selectors as arguments from locators.py 
     ---------------------
     * test_user_can_add_product_to_basket
       - Test uses def Setup from Class group: to create new user>login>check if it is loginned
       - Opens Product Page>keep stored Price and Name of Product for fucher check
-      - Activate P.O. method: No message about adding roduct to cart should be at Product Page (negative test)
+      - Activate P.O. method: No message about adding Product to cart should be at Product Page (negative test)
       - Activate P.O. method: Adding Product to Cart
       - Activate P.O. method: Asserts that Add to Cart message presents (pozitive test)
       - Activate P.O. method: Check if Name and Price in Cart are same as at Product Page
