@@ -20,7 +20,7 @@ pytest -v --tb=line --language=en -m need_review
           "how" takes (css, id, xpath, ...) string as arguments and "what" takes selectors as arguments from locators.py 
     ---------------------
     * test_user_can_add_product_to_basket
-      - Test uses def Setup from Class group: to create new user>login>check if it is loginned
+      - Test uses "def Setup" for test Class group: to create new user>login>check if it is loginned
       - Opens Product Page>keep stored Price and Name of Product for fucher check
       - Activate P.O. method: No message about adding Product to cart should be at Product Page (negative test)
       - Activate P.O. method: Adding Product to Cart
