@@ -12,7 +12,7 @@ QAStepik_Final_Project.  https://stepik.org/lesson/199980/step/6?unit=174035
 pytest -v --tb=line --language=en -m need_review
 
     runs 4 from 12 tests:
-    All asserts are in separate Page Object files.
+    All asserts are in separate Page Object files. Activate from tests_.py through P.O. methods.
     ---------------------
     * test_user_can_add_product_to_basket
       - Test uses def Setup from Class group: to create new user>login>check if it is loginned
