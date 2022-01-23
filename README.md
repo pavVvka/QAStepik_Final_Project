@@ -6,7 +6,8 @@ QAStepik_Final_Project.  https://stepik.org/lesson/199980/step/6?unit=174035
 ![skills_3](https://user-images.githubusercontent.com/83756447/150677714-ad8bdcde-17cc-45b1-af23-b9c440669e26.jpg)
 
 # Pytest + Selenium in Page Object pattern.
-![qa-test-project-file-structure](https://user-images.githubusercontent.com/83756447/150374298-b96e756e-3823-4831-87fe-aed83264c3ef.jpg)
+![qa-test-project-file-structure](https://user-images.githubusercontent.com/83756447/150680370-7cb6d31a-d7e0-4458-9858-99a41665ea36.jpg)
+
 
 
 pytest -v --tb=line --language=en -m need_review
